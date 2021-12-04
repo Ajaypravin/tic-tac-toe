@@ -13,9 +13,13 @@
         "format": "npx prettier --write \"**/*.{js,jsx, json,ts,tsx}\"",
         "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\""
     },
+    "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx}": "eslint",
+        "**/*.{js,jsx, json,ts,tsx}": "prettier --write"
+    },
     "husky": {
         "hooks": {
-            "pre-commit": "npm run typecheck && npm run format:check && npm run lint"
+            "pre-commit": "npm run typecheck && lint-staged"
         }
     },
     "dependencies": {
@@ -36,6 +40,7 @@
         "eslint-config-prettier": "^8.3.0",
         "eslint-plugin-react": "^7.27.1",
         "husky": "^4.3.8",
+        "lint-staged": "^12.1.2",
         "prettier": "2.5.0",
         "typescript": "~4.3.5"
     },
